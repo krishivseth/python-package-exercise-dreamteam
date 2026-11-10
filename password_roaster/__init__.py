@@ -2,6 +2,7 @@
 
 from .scoring import score_password
 from .crack_time import crack_time
+from .roasting import roast_password
 
 
-__all__ = ["score_password", "crack_time"]
+__all__ = ["score_password", "crack_time", "roast_password"]
