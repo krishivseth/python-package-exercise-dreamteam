@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+dreamteam-password-roaster = {path = ".", editable = true}
+
+[dev-packages]
+pytest = ">=8,<10"
+build = ">=1.2,<2"
+twine = ">=6,<7"
+
