@@ -1,14 +1,31 @@
 """Turn a password score into a roast at the heat level you pick."""
 
-from .scoring import score_password
+from .scoring import _is_common, score_password
 
 
 LEVELS = ("mild", "spicy", "savage")
+LONG_LENGTH = 64
 
-BLANK_ROASTS = {
-    "mild": "An empty password is a welcome mat, not a lock.",
-    "spicy": "You left the password blank. Bold move for someone with a bank account.",
-    "savage": "No password at all. Hackers would feel bad, if they had feelings.",
+# Special cases get their own roast before the score tiers are checked.
+SPECIAL_ROASTS = {
+    "mild": {
+        "blank": "An empty password is a welcome mat, not a lock.",
+        "common": "That password is on every hacker's top ten list. Pick something less famous.",
+        "repeat": "One key, pressed over and over. Your keyboard has other buttons, I promise.",
+        "long": "This password is longer than most terms of service. Respect, and also why?",
+    },
+    "spicy": {
+        "blank": "You left the password blank. Bold move for someone with a bank account.",
+        "common": "Congrats, you picked the same password as half the internet and your uncle.",
+        "repeat": "Did your cat fall asleep on the keyboard, or is this on purpose?",
+        "long": "Nobody is cracking this, including you at 3am when you forget it.",
+    },
+    "savage": {
+        "blank": "No password at all. Hackers would feel bad, if they had feelings.",
+        "common": "Hackers don't even brute force this one. They just say it out loud.",
+        "repeat": "Typing one letter on repeat isn't a password, it's a cry for help.",
+        "long": "You didn't make a password, you wrote a memoir. Please seek a password manager.",
+    },
 }
 
 # Each level maps score ceilings to roasts. The first ceiling the score fits under wins.
@@ -37,20 +54,37 @@ ROASTS = {
 }
 
 
+def _special_case(password: str) -> str | None:
+    if not password.strip():
+        return "blank"
+    if _is_common(password):
+        return "common"
+    if len(password) > 1 and len(set(password)) == 1:
+        return "repeat"
+    if len(password) > LONG_LENGTH:
+        return "long"
+    return None
+
+
 def roast_password(password: str, level: str = "mild") -> str:
     """Return a joke that matches how weak the password scores.
 
-    level picks how harsh the roast is: "mild", "spicy", or "savage".
-    Non-string passwords or levels raise TypeError, and unknown levels raise
-    ValueError. The roast never repeats the password.
+    level picks how harsh the roast is: "mild", "spicy", or "savage", in any
+    case and with surrounding spaces ignored. Blank, common, single-character
+    and very long passwords get their own roasts. Non-string passwords or
+    levels raise TypeError, and unknown levels raise ValueError. The roast
+    never repeats the password.
     """
     score = score_password(password)
     if not isinstance(level, str):
         raise TypeError("level must be a string")
+    level = level.strip().lower()
     if level not in LEVELS:
         raise ValueError("level must be one of: " + ", ".join(LEVELS))
-    if not password.strip():
-        return BLANK_ROASTS[level]
+
+    case = _special_case(password)
+    if case is not None:
+        return SPECIAL_ROASTS[level][case]
     for limit, roast in ROASTS[level]:
         if score <= limit:
             return roast
