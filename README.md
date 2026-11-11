@@ -167,6 +167,16 @@ The password must be a nonempty string, and `guesses_per_second` must be a posit
 
 This is a playful mathematical estimate, not a prediction of real-world password security. Actual cracking times depend on the attack method, hardware, and password storage protections.
 
+### All-functions demo
+
+The [complete demo](examples/demo.py) uses fictional passwords to show all six functions: scoring, feedback, comparison with optional roasts, roast levels, password and passphrase generation, and estimated crack time. Generated examples vary between runs; do not reuse them as real passwords.
+
+From the repository root after installing development dependencies, run:
+
+```sh
+pipenv run python -m examples.demo
+```
+
 ### Face-off example
 
 The [face-off demo](examples/faceoff_demo.py) compares fictional passwords and prints their scores, both possible winners, and a tie without printing the passwords.
