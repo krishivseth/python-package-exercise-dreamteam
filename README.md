@@ -1,7 +1,7 @@
 
 # Password Roaster
 
-[![Build and test](https://github.com/krishivseth/python-package-exercise-dreamteam/actions/workflows/tests.yml/badge.svg)](https://github.com/krishivseth/python-package-exercise-dreamteam/actions/workflows/tests.yml)
+[![Build and test](https://github.com/software-students-fall2026/python-package-exercise-dreamteam/actions/workflows/tests.yml/badge.svg)](https://github.com/software-students-fall2026/python-package-exercise-dreamteam/actions/workflows/tests.yml)
 
 Scores passwords and roasts the weaknesses. For fun...
 
@@ -10,10 +10,10 @@ Scores passwords and roasts the weaknesses. For fun...
 With Python 3.13+:
 
 ```sh
-python -m pip install dreamteam-password-roaster
+python -m pip install password-roaster-dreamteam
 ```
 
-[View the package on PyPI](https://pypi.org/project/dreamteam-password-roaster/).
+[View the package on PyPI](https://pypi.org/project/password-roaster-dreamteam/).
 
 ```python
 from password_roaster import score_password, roast_password
