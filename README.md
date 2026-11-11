@@ -1,3 +1,5 @@
-# Python Package Exercise
+# Password Roaster
 
-An exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
+[![Build and test](https://github.com/krishivseth/python-package-exercise-dreamteam/actions/workflows/tests.yml/badge.svg)](https://github.com/krishivseth/python-package-exercise-dreamteam/actions/workflows/tests.yml)
+
+Scores passwords and roasts the weaknesses. For fun...
