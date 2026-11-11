@@ -1,7 +1,7 @@
 
 # Password Roaster
 
-[![Build and test](https://github.com/krishivseth/python-package-exercise-dreamteam/actions/workflows/tests.yml/badge.svg)](https://github.com/krishivseth/python-package-exercise-dreamteam/actions/workflows/tests.yml)
+[![Build and test](https://github.com/software-students-fall2026/python-package-exercise-dreamteam/actions/workflows/tests.yml/badge.svg)](https://github.com/software-students-fall2026/python-package-exercise-dreamteam/actions/workflows/tests.yml)
 
 Scores passwords and roasts the weaknesses. For fun...
 
@@ -19,19 +19,13 @@ python -m pip install dreamteam-password-roaster
 from password_roaster import score_password, roast_password
 
 print(score_password("Password123!"))
-print(roast_password("Password123!"))
-```
-
-- `score_password(password)` returns 0–100 based on length, character variety, common passwords, repetition, and sequences. Blank input scores 0.
-- `roast_password(password, level="mild")` returns a joke about how weak the password is. `level` sets the heat to `"mild"`, `"spicy"` or `"savage"`, in any case, with surrounding spaces ignored. Blank passwords, common passwords, passwords made from one repeated character, and passwords over 64 characters get special roasts. Other passwords are roasted by score. An unknown level raises `ValueError`.
-
-```python
-from password_roaster import roast_password
-
 print(roast_password("sillygoose"))
 print(roast_password("letmein", level="spicy"))
 print(roast_password("VelvetOtter7!", level="savage"))
 ```
+
+- `score_password(password)` returns 0–100 based on length, character variety, common passwords, repetition, and sequences. Blank input scores 0.
+- `roast_password(password, level="mild")` returns a joke about how weak the password is. `level` sets the heat to `"mild"`, `"spicy"` or `"savage"`, in any case, with surrounding spaces ignored. Blank passwords, common passwords, passwords made from one repeated character, and passwords over 64 characters get special roasts. Other passwords are roasted by score. An unknown level raises `ValueError`.
 
 Both accept strings and raise `TypeError` otherwise. Neither stores or sends passwords. Use made-up passwords when trying the examples.
 
@@ -169,7 +163,7 @@ This is a playful mathematical estimate, not a prediction of real-world password
 
 ### Face-off example
 
-The [face-off demo](examples/faceoff_demo.py) compares fictional passwords and prints their scores, both possible winners, and a tie without printing the passwords.
+The [face-off demo](examples/faceoff_demo.py) uses all six public functions. It shows scores, feedback, every roast level, both possible comparison winners and a tie, comparisons with roasts, password and passphrase generation, cracking-time units and a custom guessing speed, and invalid inputs.
 
 From the repository root after installing development dependencies:
 

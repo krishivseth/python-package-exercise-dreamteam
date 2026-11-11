@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dreamteam-password-roaster"
-version = "0.1.0"
-description = "A playful password scoring package."
+version = "0.1.1"
+description = "Score, roast, compare, and generate passwords."
 readme = "README.md"
 requires-python = ">=3.13"
 license-files = ["LICENSE"]
 
 [project.urls]
-Repository = "https://github.com/krishivseth/python-package-exercise-dreamteam"
+Repository = "https://github.com/software-students-fall2026/python-package-exercise-dreamteam"
 
 [tool.setuptools]
 packages = ["password_roaster"]
